@@ -53,7 +53,6 @@ rss = {
     "News": [
         "feed://www.aljazeera.com/xml/rss/all.xml",
         "feed://america.aljazeera.com/content/ajam/articles.rss",
-        "http://rt.com/rss/",
         "http://feeds.feedburner.com/japantimes",
         "http://www.japantoday.com/feed",
         "http://api.breakingnews.com/api/v1/item/?format=rss"],

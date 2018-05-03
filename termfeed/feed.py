@@ -67,7 +67,7 @@ def _connected():
 
 def open_page(url, title):
     print(bcolors.WARNING +
-          '\topening ... {}\n'.format(title.encode('utf8')) + bcolors.ENDC)
+          '\topening ... {}\n'.format(title) + bcolors.ENDC)
     # open page in browser
     webbrowser.open(url)
 
@@ -76,7 +76,7 @@ def print_feed(zipped):
 
     for num, post in zipped.items():
         print(bcolors.OKGREEN + '[{}] '.format(num) + bcolors.ENDC, end='')
-        print('{}'.format(post.title.encode('utf8')))
+        print('{}'.format(post.title))
 
 
 def print_desc(topic, txt):
@@ -84,7 +84,7 @@ def print_desc(topic, txt):
         print(bcolors.WARNING + '\n\n{}:'.format(topic) + bcolors.ENDC)
     except UnicodeEncodeError:
         pass
-    print(bcolors.BOLD + '\n\t{}'.format(txt.encode('utf8')) + bcolors.ENDC)
+    print(bcolors.BOLD + '\n\t{}'.format(txt) + bcolors.ENDC)
 
 
 def open_it():
@@ -114,7 +114,7 @@ def clean_txt(txt):
 def _continue():
     try:
 
-        msg = """\n\nPress: Enter to continue, ... [NUM] for short description / open a page, ... or CTRL-C to exit: """
+        msg = """\n\nPress: Enter to continue, ... [NUM] for short description / open a page, ... or CTRL-C to exit:"""
         print(bcolors.FAIL + msg + bcolors.ENDC, end='')
         # kb is the pressed keyboard key
         try:
