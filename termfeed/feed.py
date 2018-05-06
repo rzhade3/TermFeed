@@ -6,7 +6,7 @@
 Usage:
     feed
     feed <rss-url>
-    feed -b
+    feed -b [<category>]
     feed -a <rss-url> [<category>]
     feed -d <rss-url>
     feed -t [<category>]
@@ -18,11 +18,11 @@ Usage:
 Options:
                   List feeds from the default category 'General' of your library.
     <URL>         List feeds from the provided url source.
-    -b            Browse feed by category avaialble in the database file.
+    -b            Browse feed by category available in the database file.
     -a URL        Add new url <rss-url> to database under [<category>] (or 'General' otherwise).
     -d URL        Delete <rss-url> from the database file.
     -t            See the stored categories in your library, or list the URLs stored under <category> in your library.
-    -D TOPIC      Remove entire cateogry (and its urls) from your library.
+    -D TOPIC      Remove entire category (and its urls) from your library.
     -R            Rebuild the library from the url.py
     -h --help     Show this screen.
 
@@ -187,28 +187,35 @@ def fetch_feeds(urls):
         recurse(zipped)
 
 
-def topic_choice(browse):
+def topic_choice(browse, category):
 
     if browse:
-        topics = dbop.topics()
+        if not category:
+            topics = dbop.topics()
 
-        tags = {}
+            tags = {}
 
-        for i, tag in enumerate(topics):
-            tags[i] = tag
-            print("{}) {}".format(i, tags[i]))
+            for i, tag in enumerate(topics):
+                tags[i] = tag
+                print("{}) {}".format(i, tags[i]))
 
-        try:
-            m = '\nChoose the topic (number)? : '
-            try: # python 2
-                uin = raw_input(m) 
-            except NameError: # python 3
-                uin = input(m)
-            uin = int(uin)
-            topic = tags[uin]
-        except: # catch all exceptions
-            print('\nInvalid choice!')
-            topic = 'General'
+            try:
+                m = '\nChoose the topic (number)? : '
+                try: # python 2
+                    uin = raw_input(m) 
+                except NameError: # python 3
+                    uin = input(m)
+                uin = int(uin)
+                topic = tags[uin]
+            except: # catch all exceptions
+                print('\nInvalid choice!')
+                topic = 'General'
+        else:
+            if (category in dbop.topics()):
+                topic = category
+            else:
+                print('\nInvalid choice!')
+                topic = 'General'
 
     else:
         topic = 'General'
@@ -246,10 +253,10 @@ def main():
     if external:
         urls = [validate_feed(external)]
     else:
-        urls = topic_choice(browse)
+        urls = topic_choice(browse, category)
 
     # if not listing feeds
-    if add_link or delete or category or tags or rebuild or remove:
+    if add_link or delete or tags or rebuild or remove:
         fetch = False
 
     # updating URLs library

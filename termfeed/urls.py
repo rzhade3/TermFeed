@@ -38,31 +38,23 @@ rss = {
         "http://feeds.feedburner.com/hacker-news-feed-200?format=xml",
         "http://feeds.feedburner.com/TheHackersNews",
         "https://news.ycombinator.com/rss",
-        "http://www.reddit.com/r/learnprogramming/",
-        "http://www.reddit.com/r/algorithms/",
-        "http://www.reddit.com/r/programming/",
+        "http://www.reddit.com/r/learnprogramming/.rss",
+        "http://www.reddit.com/r/algorithms/.rss",
+        "http://www.reddit.com/r/programming/.rss",
         "http://feeds.feedburner.com/SingularityBlog"
-    ],
-    "Stack": [
-        "http://stackoverflow.com/questions/tagged/python",
-        "http://stackoverflow.com/questions/tagged/python+numpy",
-        "http://stackoverflow.com/feeds",
-        "http://stackoverflow.com/questions/tagged/python+django",
-        "http://stackoverflow.com/questions/tagged/python+django+javascript"
     ],
     "News": [
         "feed://www.aljazeera.com/xml/rss/all.xml",
         "feed://america.aljazeera.com/content/ajam/articles.rss",
         "http://feeds.feedburner.com/japantimes",
         "http://www.japantoday.com/feed",
-        "http://api.breakingnews.com/api/v1/item/?format=rss"],
+        "http://feeds.reuters.com/reuters/businessNews"    
+    ],
 
     "Python": [
-        "feed://changelog.com/tagged/python/feed/",
         "http://feeds.feedburner.com/PythonCentral",
         "feed://blog.jupyter.org/rss/",
         "http://planetpython.org/rss20.xml",
-        "https://pypi.python.org/pypi?%3Aaction=packages_rss",
     ],
 
     "Research": [
@@ -70,6 +62,10 @@ rss = {
         'http://www.nsf.gov/statistics/rss/srs_rss.xml',
         'http://www.darpa.mil/rss',
         'http://feeds.feedburner.com/blogspot/gJZg'
+    ],
+
+    "Memes": [
+        'https://reddit.com/r/wallstreetbets/.rss'
     ],
 
     # Default (when adding a new url without specifying its cateogry it will go under the General Category)
